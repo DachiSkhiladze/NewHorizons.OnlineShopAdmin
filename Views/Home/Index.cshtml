@@ -1,0 +1,29 @@
+﻿@model List<ProductCategory>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+       <button class="CreateButton"><a href="/Home/CreateProductCategory">Create a Category</a></button>
+       <table border="1" width="39%">  
+           
+    <h1>I did not to finish this whole project because of university exams</h1>
+        
+    @foreach (var product in Model){
+        <tr>  
+            <th>
+                <h1>@product.Name</h1>
+            </th>
+            <th>
+                <h1>@ViewBag.ProductCategoryCount[product.ProductCategoryId]</h1>
+            </th>
+            <th>
+                <button class="UpdateButton"><a href="/Home/EditProductCategory/@product.ProductCategoryId.ToString()">Update</a></button>
+            </th>
+            <th>
+                <button class="DeleteButton"><a href="/Home/DeleteCategory/@product.ProductCategoryId.ToString()">Delete</a></button>
+            </th>
+        </tr>
+    }
+</div>

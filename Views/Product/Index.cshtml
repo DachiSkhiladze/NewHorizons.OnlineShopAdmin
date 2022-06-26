@@ -1,0 +1,24 @@
+﻿@model List<Product>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+       <button class="CreateButton"><a href="/Product/CreateProduct">Create a Product</a></button>
+       <table border="1" width="39%"> 
+        
+    @foreach (var product in Model){
+        <tr>  
+            <th>
+                <h1>@product.Name</h1>
+            </th>
+            <th>
+                <button class="UpdateButton"><a href="/Product/EditProduct/@product.ProductId.ToString()">Update</a></button>
+            </th>
+            <th>
+                <button class="DeleteButton"><a href="/Product/DeleteProduct/@product.ProductId.ToString()">Delete</a></button>
+            </th>
+        </tr>
+    }
+</div>

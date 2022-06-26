@@ -1,0 +1,24 @@
+﻿@model List<SalesOrderHeader>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+       <button class="CreateButton"><a href="/Order/CreateOrder">Create An Order</a></button>
+       <table border="1" width="39%"> 
+        
+    @foreach (var product in Model){
+        <tr>  
+            <th>
+                <h1>@product.CustomerId</h1>
+            </th>
+            <th>
+                <button class="UpdateButton"><a href="/Order/EditOrder/@product.SalesOrderId.ToString()">Update</a></button>
+            </th>
+            <th>
+                <button class="DeleteButton"><a href="/Order/DeleteOrder/@product.SalesOrderId.ToString()">Delete</a></button>
+            </th>
+        </tr>
+    }
+</div>

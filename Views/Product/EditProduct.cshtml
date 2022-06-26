@@ -1,0 +1,73 @@
+﻿@model Product
+
+@{
+    ViewBag.Title = "Create New Student - MVC";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create New Student</h2>
+
+@using (Html.BeginForm(controllerName:"Product", actionName:"EditProduct", method: FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ProductId)
+    <div class="form-horizontal">
+        <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.ListPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ListPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ListPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Size, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductSubcategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <select asp-for="ProductSubcategoryId" class="form-control">
+                @foreach(var item in ViewBag.SubCategories)
+                {
+                    <option value="@item.ProductSubcategoryId">@item.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductModelId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <select asp-for="ProductModelId" class="form-control">
+                @foreach(var item in ViewBag.ProductModel)
+                {
+                    <option value="@item.ProductModelId">@item.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
